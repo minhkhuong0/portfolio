@@ -17,7 +17,7 @@ permissions:
   id-token: write # This is required for requesting the JWT
   contents: read # This is required for actions/checkout
 jobs:
-  AssumeRoleAndCallIdentity:
+  PutSiteOnEC2:
     runs-on: ubuntu-latest
     steps:
       - name: Git clone the repository
@@ -30,6 +30,6 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
       - name: get instance ID
-        run: EC2_INSTANCE=${aws ec2 describe-instances --filter "Name=tag:Name,Values=static-site-ec2" \
-          --query "Reservations[0].Instances[0].InstanceId" --output text}
-      - run: echo EC2_INSTANCE
+        run: EC2_INSTANCE=(aws ec2 describe-instances --filter "Name=tag:Name,Values=static-site-ec2" \
+          --query "Reservations[0].Instances[0].InstanceId" --output text)
+      - run: echo $EC2_INSTANCE
