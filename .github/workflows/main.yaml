@@ -30,7 +30,10 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
       - name: get instance ID
-        run: echo "EC2_INSTANCE=$(aws ec2 describe-instances --filter "Name=tag:Name,Values=static-site-ec2" \
-          --query "Reservations[0].Instances[0].InstanceId" --output text)" >> $GITHUB_ENV
+        run: >
+          echo "EC2_INSTANCE=$(aws ec2 describe-instances
+          --filter "Name=tag:Name,Values=static-site-ec2"
+          --query "Reservations[0].Instances[0].InstanceId"
+          --output text)" >> $GITHUB_ENV
 
       - run: echo $EC2_INSTANCE
