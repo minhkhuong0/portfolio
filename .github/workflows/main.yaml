@@ -49,7 +49,7 @@ jobs:
         run: |
           aws ssm send-command \
             --instance-ids "${{ env.EC2_INSTANCE }}" \
-            --document-name "AWS-RunShellScript"
+            --document-name "AWS-RunShellScript" \
             --parameters '{"commands":[
               "curl -sLo /srv/static-site/index.html \"${{ env.URL }}\"" 
             ]}' \
