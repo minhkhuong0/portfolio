@@ -21,16 +21,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Git clone the repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: configure aws credentials
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: aws-actions/configure-aws-credentials@v6
         with:
           role-to-assume: arn:aws:iam::808122334604:role/github-portfolio
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Put site on S3
-        run: aws s3 cp ./portfolio/index.html s3://arn:aws:s3:::static-site-staging-s3/index.html
+        run: aws s3 cp $GITHUB_WORKSPACE/portfolio/index.html s3://arn:aws:s3:::static-site-staging-s3/index.html
 
       - name: get instance ID
         run: >
