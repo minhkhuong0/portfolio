@@ -51,6 +51,6 @@ jobs:
             --instance-ids "${{ env.EC2_INSTANCE }}" \
             --document-name "AWS-RunShellScript" \
             --parameters '{"commands":[
-              "curl -sLo /srv/static-site/index.html \"${{ env.URL }}\"" 
+              "curl -sLo /srv/static-site/content/index.html \"${{ env.URL }}\"" 
             ]}' \
             --comment "Deploying from S3"
