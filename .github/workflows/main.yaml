@@ -31,9 +31,9 @@ jobs:
 
       - name: Put site on S3 and generate presigned URL
         run: |
-          aws s3 cp $GITHUB_WORKSPACE/index.html s3://static-site-staging-s3/index.html
+          aws s3 cp $GITHUB_WORKSPACE/index.html s3://static-site-staging-s3-808122334604-eu-central-1-an/index.html
 
-          PRESIGNED_URL=$(aws s3 presign s3://static-site-staging-s3/index.html --expires-in 200)
+          PRESIGNED_URL=$(aws s3 presign s3://static-site-staging-s3-808122334604-eu-central-1-an/index.html --expires-in 200)
 
           echo "::add-mask::$PRESIGNED_URL"
           echo "URL=$PRESIGNED_URL" >> $GITHUB_ENV

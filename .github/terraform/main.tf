@@ -80,8 +80,7 @@ data "aws_iam_policy_document" "s3_read_write_doc" {
     ]
 
     resources = [
-      "arn:aws:s3:::static-site-staging-s3",
-      "arn:aws:s3:::static-site-staging-s3/*",
+      "arn:aws:s3:::static-site-staging-s3-808122334604-eu-central-1-an/*",
     ]
   }
 }
