@@ -29,11 +29,12 @@ jobs:
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
           aws-region: ${{ env.AWS_REGION }}
 
+      - name: Put site on S3
+        run: aws s3 cp ./portfolio/index.html s3://arn:aws:s3:::static-site-staging-s3/index.html
+
       - name: get instance ID
         run: >
           echo "EC2_INSTANCE=$(aws ec2 describe-instances
           --filter "Name=tag:Name,Values=static-site-ec2"
           --query "Reservations[0].Instances[0].InstanceId"
           --output text)" >> $GITHUB_ENV
-
-      - run: echo $EC2_INSTANCE
