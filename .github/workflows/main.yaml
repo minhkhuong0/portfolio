@@ -36,7 +36,7 @@ jobs:
           PRESIGNED_URL=$(aws s3 presign s3://static-site-staging-s3/index.html --expires-in 200)
 
           echo "::add-mask::$PRESIGNED_URL"
-          echo "url=$PRESIGNED_URL" >> $GITHUB_ENV
+          echo "URL=$PRESIGNED_URL" >> $GITHUB_ENV
 
       - name: get instance ID
         run: >
@@ -44,3 +44,13 @@ jobs:
           --filter "Name=tag:Name,Values=static-site-ec2"
           --query "Reservations[0].Instances[0].InstanceId"
           --output text)" >> $GITHUB_ENV
+
+      - name: put site on instance
+        run: >
+          aws ssm send-command
+            --instance-ids "${{ env.EC2_INSTANCE }}"
+            --document-name "AWS-RunShellScript"
+            --parameters '{"commands":[
+              "curl -sLo /srv/static-site/index.html \"${{ env.URL }}\""
+            ]}'
+            --comment "Deploying from S3"
