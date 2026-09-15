@@ -33,7 +33,7 @@ jobs:
         run: |
           aws s3 cp $GITHUB_WORKSPACE/index.html s3://static-site-staging-s3/index.html
 
-          PRESIGNED_URL=$(aws s3 presign s3://static-site-staging-s3/index.html --expires in 600)
+          PRESIGNED_URL=$(aws s3 presign s3://static-site-staging-s3/index.html --expires-in 200)
 
           echo "::add-mask::$PRESIGNED_URL"
           echo "url=$PRESIGNED_URL" >> $GITHUB_OUTPUT
