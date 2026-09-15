@@ -30,7 +30,7 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Put site on S3
-        run: aws s3 cp $GITHUB_WORKSPACE/index.html s3://arn:aws:s3:::static-site-staging-s3/index.html
+        run: aws s3 cp $GITHUB_WORKSPACE/index.html s3://static-site-staging-s3
 
       - name: get instance ID
         run: >
