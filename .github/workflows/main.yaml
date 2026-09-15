@@ -50,7 +50,7 @@ jobs:
           aws ssm send-command \
             --instance-ids "${{ env.EC2_INSTANCE }}" \
             --document-name "AWS-RunShellScript"
-            --parameters '{"commands":[ \
-              "curl -sLo /srv/static-site/index.html \"${{ env.URL }}\"" \
+            --parameters '{"commands":[
+              "curl -sLo /srv/static-site/index.html \"${{ env.URL }}\"" 
             ]}' \
             --comment "Deploying from S3"
