@@ -65,3 +65,12 @@ resource "aws_iam_role_policy_attachment" "github_ssm_full_access" {
   policy_arn = data.aws_iam_policy.ssm_full_access.arn
   role       = aws_iam_role.github.name
 }
+
+data "aws_iam_policy" "s3_files_full_access" {
+  arn = "arn:aws:iam::aws:policy/AmazonS3FilesFullAccess"
+}
+
+resource "aws_iam_role_policy_attachment" "github_s3_files_full_access" {
+  policy_arn = data.aws_iam_policy.s3_files_full_access.arn
+  role       = aws_iam_role.github.name
+}
