@@ -29,8 +29,14 @@ jobs:
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
           aws-region: ${{ env.AWS_REGION }}
 
-      - name: Put site on S3
-        run: aws s3 cp $GITHUB_WORKSPACE/index.html s3://static-site-staging-s3
+      - name: Put site on S3 and generate presigned URL
+        run: |
+          aws s3 cp $GITHUB_WORKSPACE/index.html s3://static-site-staging-s3/index.html
+
+          PRESIGNED_URL=$(aws s3 presign s3://static-site-staging-s3/index.html --expires in 600)
+
+          echo "::add-mask::$PRESIGNED_URL"
+          echo "url=$PRESIGNED_URL" >> $GITHUB_OUTPUT
 
       - name: get instance ID
         run: >

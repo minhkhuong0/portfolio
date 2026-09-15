@@ -66,7 +66,7 @@ resource "aws_iam_role_policy_attachment" "github_ssm_full_access" {
   role       = aws_iam_role.github.name
 }
 
-data "aws_iam_policy_document" "s3_limited_rights_doc" {
+data "aws_iam_policy_document" "s3_read_write_doc" {
 
   statement {
     sid = "s3"
@@ -74,11 +74,7 @@ data "aws_iam_policy_document" "s3_limited_rights_doc" {
     effect = "Allow"
 
     actions = [
-      "s3:ListBucket",
-      "s3:GetBucketTagging",
-      "s3:ListMultipartUploadParts",
       "s3:GetObject",
-      "s3:GetObjectTagging",
       "s3:PutObject",
       "s3:DeleteObject",
     ]
@@ -90,11 +86,11 @@ data "aws_iam_policy_document" "s3_limited_rights_doc" {
   }
 }
 
-resource "aws_iam_policy" "s3_limited_rights" {
-  policy = data.aws_iam_policy_document.s3_limited_rights_doc.json
+resource "aws_iam_policy" "s3_read_write" {
+  policy = data.aws_iam_policy_document.s3_read_write_doc.json
 }
 
-resource "aws_iam_role_policy_attachment" "github_s3_limited_rights" {
-  policy_arn = aws_iam_policy.s3_limited_rights.arn
+resource "aws_iam_role_policy_attachment" "github_s3_read_write" {
+  policy_arn = aws_iam_policy.s3_read_write.arn
   role       = aws_iam_role.github.name
 }
