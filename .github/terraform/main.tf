@@ -66,11 +66,35 @@ resource "aws_iam_role_policy_attachment" "github_ssm_full_access" {
   role       = aws_iam_role.github.name
 }
 
-data "aws_iam_policy" "s3_files_full_access" {
-  arn = "arn:aws:iam::aws:policy/AmazonS3FilesFullAccess"
+data "aws_iam_policy_document" "s3_limited_rights_doc" {
+
+  statement {
+    sid = "s3"
+
+    effect = "Allow"
+
+    actions = [
+      "s3:ListBucket",
+      "s3:GetBucketTagging",
+      "s3:ListMultipartUploadParts",
+      "s3:GetObject",
+      "s3:GetObjectTagging",
+      "s3:PutObject",
+      "s3:DeleteObject",
+    ]
+
+    resources = [
+      "arn:aws:s3:::static-site-staging-s3",
+      "arn:aws:s3:::static-site-staging-s3/*",
+    ]
+  }
 }
 
-resource "aws_iam_role_policy_attachment" "github_s3_files_full_access" {
-  policy_arn = data.aws_iam_policy.s3_files_full_access.arn
+resource "aws_iam_policy" "s3_limited_rights" {
+  policy = data.aws_iam_policy_document.s3_limited_rights_doc.json
+}
+
+resource "aws_iam_role_policy_attachment" "github_s3_limited_rights" {
+  policy_arn = aws_iam_policy.s3_limited_rights.arn
   role       = aws_iam_role.github.name
 }
