@@ -1,0 +1,4 @@
+baseURL: https://www.nhmk.de/
+locale: en-us
+title: My Static Portfolio
+theme: ["PaperMod"]
