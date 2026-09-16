@@ -12,7 +12,6 @@ on:
 env:
   AWS_REGION: eu-central-1
 
-# Permission can be added at job level or workflow level
 permissions:
   id-token: write # This is required for requesting the JWT
   contents: read # This is required for actions/checkout
@@ -22,16 +21,22 @@ jobs:
     steps:
       - name: Git clone the repository
         uses: actions/checkout@v7
-      - name: configure aws credentials
+        with:
+          submodules: true
+
+      - name: Setup hugo
+        uses: peaceiris/actions-hugo@v3
+
+      - name: Build
+        run: hugo build
+        working-directory: ${{ env.GITHUB_WORKSPACE }}
+
+      - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6
         with:
           role-to-assume: arn:aws:iam::808122334604:role/github-portfolio
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
           aws-region: ${{ env.AWS_REGION }}
-
-      - name: hugo build
-        run: hugo build
-        working-directory: ${{ env.GITHUB_WORKSPACE }}
 
       - name: Put site on S3 and generate presigned URL
         run: |
@@ -44,14 +49,14 @@ jobs:
           echo "URL=$PRESIGNED_URL" >> $GITHUB_ENV
         working-directory: ${{ env.GITHUB_WORKSPACE }}/public
 
-      - name: get instance ID
+      - name: Get instance ID
         run: >
           echo "EC2_INSTANCE=$(aws ec2 describe-instances
           --filter "Name=tag:Name,Values=static-site-ec2"
           --query "Reservations[0].Instances[0].InstanceId"
           --output text)" >> $GITHUB_ENV
 
-      - name: put site on instance
+      - name: Deploy site on instance
         run: |
           aws ssm send-command \
             --instance-ids "${{ env.EC2_INSTANCE }}" \
