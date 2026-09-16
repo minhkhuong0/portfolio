@@ -28,7 +28,7 @@ jobs:
         uses: peaceiris/actions-hugo@v3
 
       - name: Build
-        run: hugo build
+        run: hugo --minify
         working-directory: ${{ env.GITHUB_WORKSPACE }}
 
       - name: Configure AWS credentials
@@ -40,6 +40,8 @@ jobs:
 
       - name: Put site on S3 and generate presigned URL
         run: |
+          pwd
+          echo "${{ github.workspace }}"
           tar -czvf build.tar.gz .
           aws s3 cp build.tar.gz s3://static-site-staging-s3-808122334604-eu-central-1-an/build.tar.gz
 
@@ -47,7 +49,7 @@ jobs:
 
           echo "::add-mask::$PRESIGNED_URL"
           echo "URL=$PRESIGNED_URL" >> $GITHUB_ENV
-        working-directory: ${{ env.GITHUB_WORKSPACE }}/public
+        working-directory: ${{ github.workspace }}/public/
 
       - name: Get instance ID
         run: >
@@ -62,9 +64,9 @@ jobs:
             --instance-ids "${{ env.EC2_INSTANCE }}" \
             --document-name "AWS-RunShellScript" \
             --parameters '{"commands":[
+              " cd /srv/static-site/content/"
               "curl -sLO \"${{ env.URL }}\"" 
               "tar -xzvf build.tar.gz"
               "rm build.tar.gz"
             ]}' \
             --comment "Deploying from S3"
-        working-directory: /srv/static-site/content/
