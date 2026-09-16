@@ -29,14 +29,20 @@ jobs:
           role-session-name: GitHub_to_AWS_via_FederatedOIDC
           aws-region: ${{ env.AWS_REGION }}
 
+      - name: hugo build
+        run: hugo build
+        working-directory: ${{ env.GITHUB_WORKSPACE }}
+
       - name: Put site on S3 and generate presigned URL
         run: |
-          aws s3 cp $GITHUB_WORKSPACE/index.html s3://static-site-staging-s3-808122334604-eu-central-1-an/index.html
+          tar -czvf build.tar.gz .
+          aws s3 cp build.tar.gz s3://static-site-staging-s3-808122334604-eu-central-1-an/build.tar.gz
 
-          PRESIGNED_URL=$(aws s3 presign s3://static-site-staging-s3-808122334604-eu-central-1-an/index.html --expires-in 200)
+          PRESIGNED_URL=$(aws s3 presign s3://static-site-staging-s3-808122334604-eu-central-1-an/build.tar.gz --expires-in 200)
 
           echo "::add-mask::$PRESIGNED_URL"
           echo "URL=$PRESIGNED_URL" >> $GITHUB_ENV
+        working-directory: ${{ env.GITHUB_WORKSPACE }}/public
 
       - name: get instance ID
         run: >
@@ -51,6 +57,9 @@ jobs:
             --instance-ids "${{ env.EC2_INSTANCE }}" \
             --document-name "AWS-RunShellScript" \
             --parameters '{"commands":[
-              "curl -sLo /srv/static-site/content/index.html \"${{ env.URL }}\"" 
+              "curl -sLO \"${{ env.URL }}\"" 
+              "tar -xzvf build.tar.gz"
+              "rm build.tar.gz"
             ]}' \
             --comment "Deploying from S3"
+        working-directory: /srv/static-site/content/
