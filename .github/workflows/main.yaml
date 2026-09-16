@@ -40,16 +40,14 @@ jobs:
 
       - name: Put site on S3 and generate presigned URL
         run: |
-          pwd
-          echo "${{ github.workspace }}"
-          tar -czvf build.tar.gz .
+          tar -czf build.tar.gz -C public .
           aws s3 cp build.tar.gz s3://static-site-staging-s3-808122334604-eu-central-1-an/build.tar.gz
 
           PRESIGNED_URL=$(aws s3 presign s3://static-site-staging-s3-808122334604-eu-central-1-an/build.tar.gz --expires-in 200)
 
           echo "::add-mask::$PRESIGNED_URL"
           echo "URL=$PRESIGNED_URL" >> $GITHUB_ENV
-        working-directory: ${{ github.workspace }}/public/
+        working-directory: ${{ github.workspace }}
 
       - name: Get instance ID
         run: >
@@ -64,9 +62,9 @@ jobs:
             --instance-ids "${{ env.EC2_INSTANCE }}" \
             --document-name "AWS-RunShellScript" \
             --parameters '{"commands":[
-              " cd /srv/static-site/content/"
-              "curl -sLO \"${{ env.URL }}\"" 
-              "tar -xzvf build.tar.gz"
+              "cd /srv/static-site/content/",
+              "curl -sLO \"${{ env.URL }}\"",
+              "tar -xzvf build.tar.gz",
               "rm build.tar.gz"
             ]}' \
             --comment "Deploying from S3"
