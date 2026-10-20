@@ -45,3 +45,6 @@ terraform.rc
 
 # Ignote hugo build
 /public/
+
+# Ignore typst build
+*.pdf

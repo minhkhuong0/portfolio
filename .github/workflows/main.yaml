@@ -31,6 +31,13 @@ jobs:
         run: hugo --minify
         working-directory: ${{ env.GITHUB_WORKSPACE }}
 
+      - name: Setup typst
+        uses: typst-community/setup-typst@v5
+        
+      - name: Render lebenslauf
+        run: typst compile main.typ ../public/lebenslauf.pdf
+        working-directory: ${{ env.GITHUB_WORKSPACE }}/lebenslauf
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6
         with:
@@ -68,3 +75,5 @@ jobs:
               "rm build.tar.gz"
             ]}' \
             --comment "Deploying from S3"
+
+
