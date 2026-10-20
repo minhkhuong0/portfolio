@@ -35,8 +35,8 @@ jobs:
         uses: typst-community/setup-typst@v5
         
       - name: Render lebenslauf
-        run: typst compile main.typ ../public/lebenslauf.pdf
-        working-directory: ${{ env.GITHUB_WORKSPACE }}/lebenslauf
+        run: typst compile lebenslauf.typ public/lebenslauf.pdf
+        working-directory: ${{ env.GITHUB_WORKSPACE }}
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v6
