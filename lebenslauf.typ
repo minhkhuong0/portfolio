@@ -22,8 +22,8 @@
   accent-color: "#26428b",
   font: "New Computer Modern",
   paper: "a4",
-  author-position: left,
-  personal-info-position: left,
+  author-position: center,
+  personal-info-position: center,
 )
 
 /*
@@ -61,7 +61,7 @@
   company: "Fachgebiet Raumbezogene Informationsverarbeitung TU Dortmund",
   dates: dates-helper(start-date: "09.2025", end-date: "heute"),
 )
-- Erstellung von Musterlösungen für Geographisches Informationssystemaufgaben (GIS) mit Python.
+- Erstellt Musterlösungen für Geographisches Informationssystemaufgaben (GIS) mit Python
 
 == Projekte
 
@@ -74,23 +74,23 @@
   // URL is also optional
   url: "github.com/minhkhuong0/homelab-iac",
 )
-- Deklarative und reproduzierbare Provisionierung und Konfiguration von On-Premises-Knoten mit Terraform und Ansible.
-- Continuous Deployment (GitOps) in den Kubernetes-Cluster mit Argo CD.
-- Bereitstellung und Betrieb von Kubernetes-Kerninfrastruktur: K3s, MetalLB, Traefik, Longhorn.
+- Provisionierte und konfigurierte deklarativ und reproduzierbar die On-Premises-Knoten mit Terraform und Ansible
+- Etablierte Continuous Deployment (GitOps) in den Kubernetes-Cluster mit Argo CD
+- Orchestrierte die Kubernetes-Kerninfrastruktur: K3s, MetalLB, Traefik, Longhorn
 
 #project(
   name: "AWS Statische Seite",
   url: "nhmk.de",
 )
-- Deklarative Provisionierung von AWS- und Cloudflare-Ressourcen mithilfe von Terraform.
-- Automatisierte Bereitstellung eines NGINX-Webserver-Docker-Containers mit Ansible.
-- Continuous Deployment der Webseiteninhalte inklusive Lebenslauf mit GitHub Actions.
+- Provisionierte AWS- und Cloudflare-Ressourcen mithilfe von Terraform
+- Konfigurierte einen NGINX-Webserver-Docker-Container mit Ansible
+- Automatisierte die Bereitstellung der Webseiteninhalte inklusive Lebenslauf mit GitHub Actions
 
 #project(
   name: "Brettspielentwicklung (Software-Praktikum)"
 )
-- Code-Integration und -Review durch GitLab Merge Requests.
-- Implementierung der Netzwerkschicht in Kotlin, die das Online-Spielen ermöglicht.
+- Integierte und reviewed Code durch GitLab Merge Requests
+- Implementierte die Netzwerkschicht in Kotlin, die das Online-Spielen ermöglicht
 // == Extracurricular Activities
 
 // #extracurriculars(
