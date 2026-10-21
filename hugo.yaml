@@ -1,4 +1,39 @@
 baseURL: https://www.nhmk.de/
-locale: en-us
+locale: de-de
 title: Khuong Nguyen
 theme: ["PaperMod"]
+
+params:
+  defaultTheme: 'auto'
+  disableThemeToggle: false
+  ShowReadingTime: false
+  ShowCodeCopyButtons: true
+
+  homeInfoParams:
+    Title: "Khuong Nguyen"
+    Content: >-
+      B.Sc. Informatik-Student an der TU Dortmund mit Interesse an DevOps und Infrastructure as Code.
+
+
+      **Diese Webseite dient als Live-Demonstration für [IaC](https://github.com/minhkhuong0/static-site-infra)
+      & [CI/CD Pipeline](https://github.com/minhkhuong0/portfolio/actions)** -
+      Die AWS-EC2-Instanz und Cloudflare-Einträge werden mit OpenTofu bereitgestellt und der NGINX-Docker-Container mit Ansible.
+      Der Inhalt sowie der Lebenslauf werden per Github Actions automatisch gebaut und deployed.
+
+
+      **[Lebenslauf (PDF)](/lebenslauf.pdf)**
+
+  socialIcons:
+    - name: "github"
+      url: "https://github.com/minhkhuong0"
+    - name: "email"
+      url: "mailto:khuong.nguyen@tutamail.com"
+    - name: "linkedin"
+      url: "https://linkedin.com/in/nhmkhuong"
+
+menu:
+  main:
+    - identifier: "lebenslauf"
+      name: "Lebenslauf"
+      url: "/lebenslauf.pdf"
+      weight: 10
