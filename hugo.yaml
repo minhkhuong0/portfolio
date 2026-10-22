@@ -12,7 +12,8 @@ params:
   homeInfoParams:
     Title: "Khuong Nguyen"
     Content: >-
-      B.Sc. Informatik-Student an der TU Dortmund mit Interesse an DevOps und Infrastructure as Code.
+      B.Sc. Informatik-Student an der TU Dortmund | Ich möchte meine Kenntnisse in DevOps und cloud-nativen Architekturen
+      weiter ausbauen, praktische Erfahrung sammeln und von erfahrenen Engineers und Entwicklern lernen.
 
 
       **Diese Webseite dient als Live-Demonstration für [IaC](https://github.com/minhkhuong0/static-site-infra)

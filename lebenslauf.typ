@@ -108,7 +108,7 @@
 
 == Kenntnisse:
 - *Programmiersprachen*: Python, Kotlin, C, Bash, Nix
-- *Infrastruktur*: OpenTofu, Ansible, Linux (Debian, NixOS), AWS, Cloudflare, Oracle Cloud Infrastructure
+- *(Cloud-)Infrastruktur*: OpenTofu, Ansible, Linux (Debian, NixOS), AWS, Cloudflare, Oracle Cloud Infrastructure
 - *Container*: Docker, Kubernetes (K3s, Argo CD, MetalLB, Longhorn)
 - *Networking*: NGINX, Traefik, CoreDNS
 - *Tools*: Git, GitHub Actions, CI/CD
