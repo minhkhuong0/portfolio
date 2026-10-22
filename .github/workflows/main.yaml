@@ -76,4 +76,14 @@ jobs:
             ]}' \
             --comment "Deploying from S3"
 
-
+      - name: Purge Cloudflare cache
+        run: |
+          curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/purge_cache \
+            -H 'Content-Type: application/json' \
+            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+            -d '{
+              "purge_everything": true
+                }'
+        env:
+          ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
