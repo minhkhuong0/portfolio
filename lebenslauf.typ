@@ -76,7 +76,7 @@
 )
 - Provisionierte und konfigurierte deklarativ und reproduzierbar die On-Premises-Knoten mit Terraform und Ansible
 - Etablierte Continuous Deployment (GitOps) in den Kubernetes-Cluster mit Argo CD
-- Orchestrierte die Kubernetes-Kerninfrastruktur: K3s, MetalLB, Traefik, Longhorn
+- Orchestrierte die Kubernetes-Kerninfrastruktur einer cloudnativen Umgebung: K3s, MetalLB, Traefik, Longhorn
 
 #project(
   name: "AWS Statische Seite",
