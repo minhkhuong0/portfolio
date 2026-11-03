@@ -75,8 +75,11 @@
   url: "github.com/minhkhuong0/homelab-iac",
 )
 - Provisionierte und konfigurierte deklarativ und reproduzierbar die On-Premises-Knoten mit Terraform und Ansible
-- Etablierte Continuous Deployment (GitOps) in den Kubernetes-Cluster mit Argo CD
-- Orchestrierte die Kerninfrastruktur einer cloudnativen und hochverfügbaren Umgebung: MetalLB, Traefik, Longhorn
+- Etablierte Continuous Deployment (GitOps) im Kubernetes-Cluster mit Argo CD zur deklarativen Bereitstellung,
+  Drift-Detection und automatisierten Rollbacks.
+- Orchestrierte die Kerninfrastruktur einer cloudnativen und hochverfügbaren Umgebung: MetalLB, Longhorn, CNPG
+- Integierte ein zentrales Observability-Framework mit Prometheus und Grafana zur Echtzeit-Überwachung und
+  Visualisierung von Cluster- und Andwendungsmetriken
 
 #project(
   name: "AWS Statische Seite",
@@ -107,9 +110,10 @@
 // )
 
 == Kenntnisse:
-- *Programmiersprachen*: Python, Kotlin, C, Bash, Nix
 - *(Cloud-)Infrastruktur*: OpenTofu, Ansible, Linux (Debian, NixOS), AWS, Cloudflare, Oracle Cloud Infrastructure
-- *Container*: Docker, Kubernetes (K3s, Argo CD, MetalLB, Longhorn, Helm, Kustomize)
+- *Container und Orchestrierung*: Docker, Kubernetes (K3s, Argo CD, MetalLB, Longhorn, CloudNativePostgreSQL,
+  cert-manager, Helm, Kustomize)
 - *Networking*: NGINX, Traefik, CoreDNS
-- *Tools*: Git, GitHub Actions, CI/CD
+- *DevOps und Observability*: Git, GitHub Actions, CI/CD, Prometheus, Grafana
+- *Programmiersprachen*: Python, Kotlin, C, Bash, Nix
 - *Sprachen*: Deutsch (Verhandlungssicher), Englisch (Verhandlungssicher), Vietnamesisch: (Mutterspache)
