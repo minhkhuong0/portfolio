@@ -67,6 +67,9 @@
 - Orchestrierte die Kerninfrastruktur einer cloudnativen und hochverfügbaren Umgebung: MetalLB, Longhorn, CNPG
 - Integierte ein zentrales Observability-Framework mit Prometheus und Grafana zur Echtzeit-Überwachung und
   Visualisierung von Cluster- und Andwendungsmetriken
+- Implementierte das automatisiert Secret-Deployment durch GitOps
+  ohne Klartext-Schlüssel im Repository mit hilfe von
+  External Secrets Operator mit Vault und SOPS
 
 #project(
   name: "AWS Statische Seite",
@@ -97,11 +100,13 @@
 // )
 
 == Kenntnisse:
-- *(Cloud-)Infrastruktur*: OpenTofu, Ansible, Linux (Debian, NixOS), AWS, Cloudflare, Oracle Cloud Infrastructure
-- *Container und Orchestrierung*: Docker, Kubernetes (K3s, Argo CD, MetalLB, Longhorn, CloudNativePostgreSQL,
-  cert-manager, Helm, Kustomize)
-- *Networking*: NGINX, Traefik, CoreDNS, OpenWRT
-- *DevOps und Observability*: Git, GitHub Actions, CI/CD, Prometheus, Grafana
+- *(Cloud-)Infrastruktur*: OpenTofu, Ansible, Linux (Debian, NixOS),
+   AWS, Cloudflare, Oracle Cloud Infrastructure, Proxmox VE
+- *Container und Orchestrierung*: Docker, Kubernetes (K3s,
+  Longhorn, CloudNativePostgreSQL), Helm, Kustomize
+- *Networking und Sicherheit*: NGINX, Traefik, CoreDNS, OpenWrt, WireGuard,  OpenBao, MetalLB, cert-manager, External Secrets Operator
+- *DevOps und Observability*: Git, GitHub Actions, CI/CD, Argo CD,
+  Prometheus, Grafana
 - *Programmiersprachen*: Python, Kotlin, C, Bash, Nix
 - *Sprachen*: Deutsch (Verhandlungssicher), Englisch (Verhandlungssicher), Vietnamesisch: (Mutterspache)
 
@@ -116,6 +121,6 @@
   // Uncomment the line below if you want edu formatting to be consistent with everything else
   consistent: true
 )
-- Relevante abgeschlossene Module: Software-Praktikum, Softwaretechnik, Betriebssysteme, Rechernetze
+- Relevante abgeschlossene Module: Software-Praktikum, Softwaretechnik, Betriebssysteme, Rechernetze, Sicherheit
 - Aktueller Notendurchschnitt: 1,6
 
