@@ -39,20 +39,6 @@
 * #generic-two-by-two(top-left: "", top-right: "", bottom-left: "", bottom-right: "")
 * #generic-one-by-two(left: "", right: "")
 */
-== Bildungsweg
-
-#edu(
-  degree: "Technische Universität Dortmund",
-  location: "Dortmund, Deutschland",
-  dates: dates-helper(start-date: "10.2024", end-date: "heute"),
-  institution: "B. Sc. in Informatik",
-
-  // Uncomment the line below if you want edu formatting to be consistent with everything else
-  consistent: true
-)
-- Relevante abgeschlossene Module: Software-Praktikum, Softwaretechnik, Betriebssysteme, Rechernetze
-- Aktueller Notendurchschnitt: 1,6
-
 == Berufserfahrung
 
 #work(
@@ -62,6 +48,7 @@
   dates: dates-helper(start-date: "09.2025", end-date: "heute"),
 )
 - Erstellt Musterlösungen für Geographisches Informationssystemaufgaben (GIS) mit Python
+- Automasiert den Import externer Geodaten durch maßgeschneiderte Python-Skripte.
 
 == Projekte
 
@@ -113,7 +100,22 @@
 - *(Cloud-)Infrastruktur*: OpenTofu, Ansible, Linux (Debian, NixOS), AWS, Cloudflare, Oracle Cloud Infrastructure
 - *Container und Orchestrierung*: Docker, Kubernetes (K3s, Argo CD, MetalLB, Longhorn, CloudNativePostgreSQL,
   cert-manager, Helm, Kustomize)
-- *Networking*: NGINX, Traefik, CoreDNS
+- *Networking*: NGINX, Traefik, CoreDNS, OpenWRT
 - *DevOps und Observability*: Git, GitHub Actions, CI/CD, Prometheus, Grafana
 - *Programmiersprachen*: Python, Kotlin, C, Bash, Nix
 - *Sprachen*: Deutsch (Verhandlungssicher), Englisch (Verhandlungssicher), Vietnamesisch: (Mutterspache)
+
+== Bildungsweg
+
+#edu(
+  degree: "Technische Universität Dortmund",
+  location: "Dortmund, Deutschland",
+  dates: dates-helper(start-date: "10.2024", end-date: "heute"),
+  institution: "B. Sc. in Informatik",
+
+  // Uncomment the line below if you want edu formatting to be consistent with everything else
+  consistent: true
+)
+- Relevante abgeschlossene Module: Software-Praktikum, Softwaretechnik, Betriebssysteme, Rechernetze
+- Aktueller Notendurchschnitt: 1,6
+
