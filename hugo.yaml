@@ -7,7 +7,6 @@ params:
   defaultTheme: 'auto'
   disableThemeToggle: false
   ShowReadingTime: false
-  ShowCodeCopyButtons: true
 
   homeInfoParams:
     Title: "Khuong Nguyen"
@@ -18,11 +17,19 @@ params:
 
       **Diese Webseite dient als Live-Demonstration für [IaC](https://github.com/minhkhuong0/static-site-infra)
       & [CI/CD Pipeline](https://github.com/minhkhuong0/portfolio/actions)** -
-      Die AWS-EC2-Instanz und Cloudflare-Einträge werden mit OpenTofu bereitgestellt und der NGINX-Docker-Container mit Ansible.
+      Die AWS-EC2-Instanz und Cloudflare-Einträge werden mit OpenTofu bereitgestellt und der NGINX-Docker-Container
+      mit Ansible.
       Der Inhalt sowie der Lebenslauf werden per Github Actions automatisch gebaut und deployed.
 
 
       **[Lebenslauf (PDF)](/lebenslauf.pdf)**
+
+      ### Projekte
+
+      [**Kubernetes Homelab IAC:**](https://github.com/minhkhuong0/homelab-iac)
+      Ich arbeite zur Zeit an einem hochverfügbaren Kubernetes-Cluster. Dieses Repository
+      enthält meine Terraform-, Ansible- und Kubernetes-Manifests zum automatischen Aufbau eines K3s-Clusters auf Proxmox.
+      Nach dem Bootstrapping mithilfe Ansible, übernimmt ArgoCD vollständig das Deployment.
 
   socialIcons:
     - name: "github"
